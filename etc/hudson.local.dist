@@ -1,0 +1,14 @@
+# Copy this file to "hudson.local" to override values from the default
+# configuration in "hudson"
+
+# Override the default hudson user here if required.
+#HUDSON_USER=ubuntu
+
+# Disable checking for an open port
+#CHECK_PORT=0
+
+# IP address for the HTTP connector (leave commented for the default)
+#HTTP_LISTEN_ADDRESS=127.0.0.1
+
+# Additional prefix for the PATH
+#ADDITIONAL_PATH=/kolab/bin:
