@@ -1,4 +1,6 @@
-URL_WAR=http://updates.hudson-labs.org/download/war/1.394/hudson.war
+WAR_URL=http://updates.hudson-labs.org/download/war/1.394/hudson.war
+PLUGIN_URL=http://updates.hudson-labs.org/download/plugins/
+
 PLUGINS=analysis-collector.hpi.1.9 \
         analysis-core.hpi.1.15 \
         checkstyle.hpi.3.11 \
@@ -13,7 +15,9 @@ PLUGINS=analysis-collector.hpi.1.9 \
         violations.hpi.0.7.7 \
         xunit.hpi.1.13
 
-URL_WAR_LATEST=http://hudson-ci.org/latest/hudson.war
+WAR_LATEST_URL=http://updates.hudson-labs.org/latest/hudson.war
+PLUGIN_LATEST_URL=http://updates.hudson-labs.org/latest/
+
 PLUGINS_LATEST=analysis-collector.hpi \
                analysis-core.hpi \
                checkstyle.hpi \
@@ -35,7 +39,7 @@ hudson-install: hudson-war hudson-plugins
 hudson-war: $(INSTALLDIR)/war/hudson.war
 
 $(INSTALLDIR)/war/hudson.war: $(INSTALLDIR)/war/.keep
-	cd $(INSTALLDIR)/war && wget $(URL_WAR)
+	cd $(INSTALLDIR)/war && wget $(WAR_URL)
 
 $(INSTALLDIR)/war/.keep:
 	mkdir -p $(INSTALLDIR)/war
@@ -52,21 +56,21 @@ PHONY: $(PLUGINS)
 $(PLUGINS): $(WORKDIR)/workdir/plugins/.keep
 	NAME=$(shell echo $(@) | sed -e 's/\.hpi\..*//'); \
 	  VERSION=$(shell echo $(@) | sed -e 's/.*\.hpi\.//'); \
-	  cd $(WORKDIR)/workdir/plugins && wget http://hudson-ci.org/download/plugins/$$NAME/$$VERSION/$$NAME.hpi
+	  cd $(WORKDIR)/workdir/plugins && wget $(PLUGIN_URL)/$$NAME/$$VERSION/$$NAME.hpi
 
 .PHONY:hudson-install-latest
 hudson-install-latest: hudson-war-latest hudson-plugins-latest
 
 PHONY:hudson-war-latest
 hudson-war-latest: $(INSTALLDIR)/war/.keep
-	cd $(INSTALLDIR)/war && wget $(URL_WAR_LATEST)
+	cd $(INSTALLDIR)/war && wget $(WAR_LATEST_URL)
 
 PHONY: hudson-plugins-latest
 hudson-plugins-latest: $(PLUGINS_LATEST)
 
 PHONY:$(PLUGINS_LATEST)
 $(PLUGINS_LATEST): $(WORKDIR)/workdir/plugins/.keep
-	cd $(WORKDIR)/workdir/plugins && wget http://hudson-ci.org/latest/$(@)
+	cd $(WORKDIR)/workdir/plugins && wget $(PLUGIN_LATEST_URL)/$(@)
 
 .PHONY:start
 start:
