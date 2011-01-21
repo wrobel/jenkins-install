@@ -1,17 +1,17 @@
-URL_WAR=http://updates.hudson-labs.org/download/war/1.392/hudson.war
-PLUGINS=analysis-collector.hpi.1.8 \
-        analysis-core.hpi.1.14 \
-        checkstyle.hpi.3.10 \
+URL_WAR=http://updates.hudson-labs.org/download/war/1.394/hudson.war
+PLUGINS=analysis-collector.hpi.1.9 \
+        analysis-core.hpi.1.15 \
+        checkstyle.hpi.3.11 \
         clover.hpi.3.0.2 \
-        dashboard-view.hpi.1.8.1 \
-        dry.hpi.2.10 \
-        git.hpi.1.1.3 \
-        greenballs.hpi.1.8 \
-        htmlpublisher.hpi.0.4 \
+        dashboard-view.hpi.1.8.2 \
+        dry.hpi.2.11 \
+        git.hpi.1.1.4 \
+        greenballs.hpi.1.9 \
+        htmlpublisher.hpi.0.6 \
         jdepend.hpi.1.2.2 \
-        pmd.hpi.3.10 \
+        pmd.hpi.3.11 \
         violations.hpi.0.7.7 \
-        xunit.hpi.1.12
+        xunit.hpi.1.13
 
 URL_WAR_LATEST=http://hudson-ci.org/latest/hudson.war
 PLUGINS_LATEST=analysis-collector.hpi \
@@ -83,7 +83,5 @@ hudson-clean:
 	rm -rf $(INSTALLDIR)/log/hudson.log \
 	       $(INSTALLDIR)/run/hudson.pid \
 	       $(INSTALLDIR)/run/hudson     \
-	       $(INSTALLDIR)/war/hudson.war \
-	       $(INSTALLDIR)/war/hudson.tmp \
-	       $(INSTALLDIR)/war/hudson.bak \
+	       $(INSTALLDIR)/war            \
 	       $(WORKDIR)/workdir/plugins
