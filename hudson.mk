@@ -1,4 +1,4 @@
-WAR_URL=http://updates.hudson-labs.org/download/war/1.394/hudson.war
+WAR_URL=http://updates.hudson-labs.org/download/war/1.395/hudson.war
 PLUGIN_URL=http://updates.hudson-labs.org/download/plugins/
 
 PLUGINS=analysis-collector.hpi.1.9 \
