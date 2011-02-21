@@ -1,26 +1,26 @@
 #!/bin/bash
-# /etc/init.d/hudson
-# debian-compatible hudson startup script.
+# /etc/init.d/jenkins
+# debian-compatible jenkins startup script.
 # Amelia A Lewis <alewis@ibco.com>
 #
 ### BEGIN INIT INFO
-# Provides:          hudson
+# Provides:          jenkins
 # Required-Start:    $remote_fs $syslog $network
 # Required-Stop:     $remote_fs $syslog $network
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Start hudson at boot time
-# Description:       Controls the hudson continuous integration engine.
+# Short-Description: Start jenkins at boot time
+# Description:       Controls the jenkins continuous integration engine.
 ### END INIT INFO
 
-DESC="Hudson Continuous Integration Server"
-NAME=hudson
+DESC="Jenkins Continuous Integration Server"
+NAME=jenkins
 
 if [ "x$WORKDIR" == "x" ]; then
-  WORKDIR=$HOME/horde-support/ci-hudson
+  WORKDIR=$HOME/horde-support/ci-jenkins
 fi
 
-# defaults for hudson continuous integration server
+# defaults for jenkins continuous integration server
 SCRIPTNAME=$INSTALLDIR/init.d/$NAME
 
 # Load the configuration
@@ -31,11 +31,11 @@ SCRIPTNAME=$INSTALLDIR/init.d/$NAME
 PATH=$ADDITIONAL_PATH/bin:/usr/bin:/sbin:/usr/sbin
 
 if [ "x$HTTP_LISTEN_ADDRESS" != "x" ]; then
-    HUDSON_ARGS="$HUDSON_ARGS --httpListenAddress=$HTTP_LISTEN_ADDRESS"
+    JENKINS_ARGS="$JENKINS_ARGS --httpListenAddress=$HTTP_LISTEN_ADDRESS"
 fi
 
 if [ "x$HTTP_PORT" != "x" ]; then
-    HUDSON_ARGS="$HUDSON_ARGS --httpPort=$HTTP_PORT"
+    JENKINS_ARGS="$JENKINS_ARGS --httpPort=$HTTP_PORT"
 fi
 
 # Exit if not supposed to run standalone
@@ -82,36 +82,36 @@ check_tcp_port() {
 #
 do_start()
 {
-    # the default location is /var/run/hudson/hudson.pid but the parent directory needs to be created
+    # the default location is /var/run/jenkins/jenkins.pid but the parent directory needs to be created
     mkdir `dirname $PIDFILE` > /dev/null 2>&1 || true
-    chown $HUDSON_USER `dirname $PIDFILE`
+    chown $JENKINS_USER `dirname $PIDFILE`
 
-    # Verify that the hudson port is not already in use, winstone does not exit
+    # Verify that the jenkins port is not already in use, winstone does not exit
     # even for BindException
     if [ "x$CHECK_PORT" == "x1" ]; then
 	check_tcp_port "http" "$HTTP_PORT" "8080" || return 1
     fi
 
-    HUDSON_HOME=$HUDSON_HOME exec setsid $JAVA $JAVA_ARGS -jar $HUDSON_WAR $HUDSON_ARGS < /dev/null >> $HUDSON_LOG 2>&1 & \
+    JENKINS_HOME=$JENKINS_HOME exec setsid $JAVA $JAVA_ARGS -jar $JENKINS_WAR $JENKINS_ARGS < /dev/null >> $JENKINS_LOG 2>&1 & \
                 echo $! > $PIDFILE & \
                 disown $!
 }
 
 
 #
-# Verify that all hudson processes have been shutdown
+# Verify that all jenkins processes have been shutdown
 # and if not, then do killall for them
 # 
 get_running() 
 {
-    return `ps -U $HUDSON_USER --no-headers -f | egrep -e '(java|daemon)' | grep -c . `
+    return `ps -U $JENKINS_USER --no-headers -f | egrep -e '(java|daemon)' | grep -c . `
 }
 
 force_stop() 
 {
     get_running
     if [ $? -ne 0 ]; then 
-	killall -u $HUDSON_USER java || return 3
+	killall -u $JENKINS_USER java || return 3
     fi
 }
 
@@ -174,14 +174,14 @@ case "$1" in
       get_running
       procs=$?
       if [ $procs -eq 0 ]; then 
-	  echo -n "Hudson is not running"
+	  echo -n "Jenkins is not running"
 	  if [ -f $PIDFILE ]; then 
 	      echo ", but the pidfile ($PIDFILE) still exists"
 	  else 
 	      echo
 	  fi
       else 
-	  echo "$procs instances of hudson are running at the moment"
+	  echo "$procs instances of jenkins are running at the moment"
 	  echo "but the pidfile $PIDFILE is missing"
       fi
     ;;

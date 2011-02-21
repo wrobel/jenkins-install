@@ -1,5 +1,5 @@
-WAR_URL=http://updates.hudson-labs.org/download/war/1.395/hudson.war
-PLUGIN_URL=http://updates.hudson-labs.org/download/plugins/
+WAR_URL=http://updates.jenkins-labs.org/download/war/1.395/jenkins.war
+PLUGIN_URL=http://updates.jenkins-labs.org/download/plugins/
 
 PLUGINS=analysis-collector.hpi.1.9 \
         analysis-core.hpi.1.15 \
@@ -15,8 +15,8 @@ PLUGINS=analysis-collector.hpi.1.9 \
         violations.hpi.0.7.7 \
         xunit.hpi.1.13
 
-WAR_LATEST_URL=http://updates.hudson-labs.org/latest/hudson.war
-PLUGIN_LATEST_URL=http://updates.hudson-labs.org/latest/
+WAR_LATEST_URL=http://updates.jenkins-labs.org/latest/jenkins.war
+PLUGIN_LATEST_URL=http://updates.jenkins-labs.org/latest/
 
 PLUGINS_LATEST=analysis-collector.hpi \
                analysis-core.hpi \
@@ -32,21 +32,21 @@ PLUGINS_LATEST=analysis-collector.hpi \
                violations.hpi \
                xunit.hpi
 
-.PHONY:hudson-install
-hudson-install: hudson-war hudson-plugins
+.PHONY:jenkins-install
+jenkins-install: jenkins-war jenkins-plugins
 
-.PHONY:hudson-war
-hudson-war: $(INSTALLDIR)/war/hudson.war
+.PHONY:jenkins-war
+jenkins-war: $(INSTALLDIR)/war/jenkins.war
 
-$(INSTALLDIR)/war/hudson.war: $(INSTALLDIR)/war/.keep
+$(INSTALLDIR)/war/jenkins.war: $(INSTALLDIR)/war/.keep
 	cd $(INSTALLDIR)/war && wget $(WAR_URL)
 
 $(INSTALLDIR)/war/.keep:
 	mkdir -p $(INSTALLDIR)/war
 	touch $@
 
-.PHONY:hudson-plugins
-hudson-plugins: $(WORKDIR)/workdir/plugins/.keep $(PLUGINS)
+.PHONY:jenkins-plugins
+jenkins-plugins: $(WORKDIR)/workdir/plugins/.keep $(PLUGINS)
 
 $(WORKDIR)/workdir/plugins/.keep:
 	mkdir -p $(WORKDIR)/workdir/plugins
@@ -58,15 +58,15 @@ $(PLUGINS): $(WORKDIR)/workdir/plugins/.keep
 	  VERSION=$(shell echo $(@) | sed -e 's/.*\.hpi\.//'); \
 	  cd $(WORKDIR)/workdir/plugins && wget $(PLUGIN_URL)/$$NAME/$$VERSION/$$NAME.hpi
 
-.PHONY:hudson-install-latest
-hudson-install-latest: hudson-war-latest hudson-plugins-latest
+.PHONY:jenkins-install-latest
+jenkins-install-latest: jenkins-war-latest jenkins-plugins-latest
 
-PHONY:hudson-war-latest
-hudson-war-latest: $(INSTALLDIR)/war/.keep
+PHONY:jenkins-war-latest
+jenkins-war-latest: $(INSTALLDIR)/war/.keep
 	cd $(INSTALLDIR)/war && wget $(WAR_LATEST_URL)
 
-PHONY: hudson-plugins-latest
-hudson-plugins-latest: $(PLUGINS_LATEST)
+PHONY: jenkins-plugins-latest
+jenkins-plugins-latest: $(PLUGINS_LATEST)
 
 PHONY:$(PLUGINS_LATEST)
 $(PLUGINS_LATEST): $(WORKDIR)/workdir/plugins/.keep
@@ -75,17 +75,17 @@ $(PLUGINS_LATEST): $(WORKDIR)/workdir/plugins/.keep
 .PHONY:start
 start:
 	export INSTALLDIR=$(INSTALLDIR) WORKDIR=$(WORKDIR) && \
-	  $(INSTALLDIR)/init.d/hudson start
+	  $(INSTALLDIR)/init.d/jenkins start
 
 .PHONY:stop
 stop:
 	export INSTALLDIR=$(INSTALLDIR) WORKDIR=$(WORKDIR) && \
-	  $(INSTALLDIR)/init.d/hudson stop
+	  $(INSTALLDIR)/init.d/jenkins stop
 
-PHONY:hudson-clean
-hudson-clean:
-	rm -rf $(INSTALLDIR)/log/hudson.log \
-	       $(INSTALLDIR)/run/hudson.pid \
-	       $(INSTALLDIR)/run/hudson     \
+PHONY:jenkins-clean
+jenkins-clean:
+	rm -rf $(INSTALLDIR)/log/jenkins.log \
+	       $(INSTALLDIR)/run/jenkins.pid \
+	       $(INSTALLDIR)/run/jenkins     \
 	       $(INSTALLDIR)/war            \
 	       $(WORKDIR)/workdir/plugins

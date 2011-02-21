@@ -1,11 +1,11 @@
 include settings.mk
-include hudson.mk
+include jenkins.mk
 
 .PHONY:install
-install: hudson-install
+install: jenkins-install
 
 .PHONY:install-latest
-install-latest: hudson-install-latest
+install-latest: jenkins-install-latest
 
 PHONY:clean
-clean: hudson-clean
+clean: jenkins-clean

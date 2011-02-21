@@ -1,14 +1,14 @@
-===============================
-Hudson installation environment
-===============================
+================================
+Jenkins installation environment
+================================
 
 Introduction
 ~~~~~~~~~~~~
 
-This repository provides a quick installation method for Hudson on a
+This repository provides a quick installation method for Jenkins on a
 Linux system (only tested with Ubuntu though). The provided toolset is
-certainly not applicable in all situations but it may help the one
-or the other to get a quick Hudson installation up and running.
+certainly not applicable in all situations but it may help the one or
+the other to get a quick Jenkins installation up and running.
 
 
 Requirements
@@ -27,14 +27,15 @@ Installation
 In order to allow for local configuration settings you need to copy
 the distributed configuration file first:
 
-cp ./etc/hudson.local.dist ./etc/hudson.local
+cp ./etc/jenkins.local.dist ./etc/jenkins.local
 
-Now you can edit ./etc/hudson.local and override any settings from
-./etc/hudson in there. You will find some suggestions in
-./etc/hudson.local. It is most likely that you would want to fix the
-user name used to run the hudson server. The default is "hudson" which
-might not exist on your system. Especially for test installations you
-should simply set HUDSON_USER to your own user name.
+Now you can edit ./etc/jenkins.local and override any settings from
+./etc/jenkins in there. You will find some suggestions in
+./etc/jenkins.local. It is most likely that you would want to fix the
+user name used to run the jenkins server. The default is "jenkins"
+which might not exist on your system. Especially for test
+installations you should simply set JENKINS_USER to your own user
+name.
 
 Once the configuration has been set you can simply run
 
@@ -60,13 +61,13 @@ should fire the server up
 
 should kill the server.
 
-2. Installing what Hudson upstream provides as "latest" packages:
+2. Installing what Jenkins upstream provides as "latest" packages:
 
  make install-latest
 
 These are not necessary the "latest" packages released and there may
 be updates available. But you will be notified of that whithin the
-Hudson management console.
+Jenkins management console.
 
 
 Uninstall
@@ -80,5 +81,5 @@ followed by
 
  make clean
 
-This should fully remove the hudson server.
+This should fully remove the Jenkins server.
 

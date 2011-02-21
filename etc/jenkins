@@ -1,5 +1,5 @@
 # pulled in from the init script; makes things easier.
-NAME=hudson
+NAME=jenkins
 
 # location of java
 JAVA=/usr/bin/java
@@ -7,29 +7,29 @@ JAVA=/usr/bin/java
 # arguments to pass to java
 #JAVA_ARGS="-Xmx256m"
 
-PIDFILE=$INSTALLDIR/run/hudson.pid
+PIDFILE=$INSTALLDIR/run/jenkins.pid
 
 # user id to be invoked as (otherwise will run as root; not wise!)
-HUDSON_USER=hudson
+JENKINS_USER=jenkins
 
-# location of the hudson war file
-HUDSON_WAR=$INSTALLDIR/war/hudson.war
+# location of the jenkins war file
+JENKINS_WAR=$INSTALLDIR/war/jenkins.war
 
-# hudson home location
-HUDSON_HOME=$WORKDIR/workdir
+# jenkins home location
+JENKINS_HOME=$WORKDIR/workdir
 
-# set this to false if you don't want Hudson to run by itself
+# set this to false if you don't want Jenkins to run by itself
 # in this set up, you are expected to provide a servlet containr
-# to host hudson.
+# to host jenkins.
 RUN_STANDALONE=true
 
 # log location.  this may be a syslog facility.priority
-HUDSON_LOG=$INSTALLDIR/log/$NAME.log
-#HUDSON_LOG=daemon.info
+JENKINS_LOG=$INSTALLDIR/log/$NAME.log
+#JENKINS_LOG=daemon.info
 
 # OS LIMITS SETUP
 #   comment this out to observe /etc/security/limits.conf
-#   this is on by default because http://github.com/feniix/hudson/commit/d13c08ea8f5a3fa730ba174305e6429b74853927
+#   this is on by default because http://github.com/feniix/jenkins/commit/d13c08ea8f5a3fa730ba174305e6429b74853927
 #   reported that Ubuntu's PAM configuration doesn't include pam_limits.so, and as a result the # of file
 #   descriptors are forced to 1024 regardless of /etc/security/limits.conf
 MAXOPENFILES=8192
@@ -46,12 +46,12 @@ CHECK_PORT=1
 # port for AJP connector (disabled by default)
 AJP_PORT=-1
 
-# arguments to pass to hudson.
+# arguments to pass to jenkins.
 # --javahome=$JAVA_HOME
 # --httpPort=$HTTP_PORT (default 8080; disable with -1)
 # --httpsPort=$HTTP_PORT
 # --ajp13Port=$AJP_PORT
 # --argumentsRealm.passwd.$ADMIN_USER=[password]
 # --argumentsRealm.$ADMIN_USER=admin
-# --webroot=~/.hudson/war
-HUDSON_ARGS="--webroot=$INSTALLDIR/run/hudson/war --httpPort=$HTTP_PORT --ajp13Port=$AJP_PORT"
+# --webroot=~/.jenkins/war
+JENKINS_ARGS="--webroot=$INSTALLDIR/run/jenkins/war --httpPort=$HTTP_PORT --ajp13Port=$AJP_PORT"
