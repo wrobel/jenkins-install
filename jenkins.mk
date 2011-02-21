@@ -1,5 +1,5 @@
-WAR_URL=http://updates.jenkins-labs.org/download/war/1.395/jenkins.war
-PLUGIN_URL=http://updates.jenkins-labs.org/download/plugins/
+WAR_URL=http://mirrors.jenkins-ci.org/war/1.398/jenkins.war
+PLUGIN_URL=http://mirrors.jenkins-ci.org/plugins/
 
 PLUGINS=analysis-collector.hpi.1.9 \
         analysis-core.hpi.1.15 \
