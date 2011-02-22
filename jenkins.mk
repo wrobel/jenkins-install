@@ -11,12 +11,14 @@ PLUGINS=analysis-collector.hpi.1.9 \
         greenballs.hpi.1.9 \
         htmlpublisher.hpi.0.6 \
         jdepend.hpi.1.2.2 \
+        plot.hpi.1.4 \
         pmd.hpi.3.11 \
         violations.hpi.0.7.7 \
         xunit.hpi.1.13
 
-WAR_LATEST_URL=http://updates.jenkins-labs.org/latest/jenkins.war
-PLUGIN_LATEST_URL=http://updates.jenkins-labs.org/latest/
+WAR_LATEST_URL=http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+# No provided at the moment
+PLUGIN_LATEST_URL=http://mirrors.jenkins-ci.org/latest/
 
 PLUGINS_LATEST=analysis-collector.hpi \
                analysis-core.hpi \
@@ -28,6 +30,7 @@ PLUGINS_LATEST=analysis-collector.hpi \
                greenballs.hpi \
                htmlpublisher.hpi \
                jdepend.hpi \
+               plot.hpi \
                pmd.hpi \
                violations.hpi \
                xunit.hpi
@@ -58,8 +61,11 @@ $(PLUGINS): $(WORKDIR)/workdir/plugins/.keep
 	  VERSION=$(shell echo $(@) | sed -e 's/.*\.hpi\.//'); \
 	  cd $(WORKDIR)/workdir/plugins && wget $(PLUGIN_URL)/$$NAME/$$VERSION/$$NAME.hpi
 
+# Should be:
+#jenkins-install-latest: jenkins-war-latest jenkins-plugins-latest
+# But "latest" plugins are currently not being provided.
 .PHONY:jenkins-install-latest
-jenkins-install-latest: jenkins-war-latest jenkins-plugins-latest
+jenkins-install-latest: jenkins-war-latest jenkins-plugins
 
 PHONY:jenkins-war-latest
 jenkins-war-latest: $(INSTALLDIR)/war/.keep
