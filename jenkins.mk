@@ -1,20 +1,20 @@
-WAR_URL=http://mirrors.jenkins-ci.org/war/1.398/jenkins.war
+WAR_URL=http://mirrors.jenkins-ci.org/war/1.413/jenkins.war
 PLUGIN_URL=http://mirrors.jenkins-ci.org/plugins/
 
-PLUGINS=analysis-collector.hpi.1.9 \
-        analysis-core.hpi.1.15 \
-        checkstyle.hpi.3.11 \
-        clover.hpi.3.0.2 \
-        dashboard-view.hpi.1.8.2 \
-        dry.hpi.2.11 \
-        git.hpi.1.1.4 \
-        greenballs.hpi.1.9 \
+PLUGINS=analysis-collector.hpi.1.13 \
+        analysis-core.hpi.1.19 \
+        checkstyle.hpi.3.15 \
+        clover.hpi.4.0.1 \
+        dashboard-view.hpi.2.0.2 \
+        dry.hpi.2.15 \
+        git.hpi.1.1.9 \
+        greenballs.hpi.1.10 \
         htmlpublisher.hpi.0.6 \
-        jdepend.hpi.1.2.2 \
+        jdepend.hpi.1.2.3 \
         plot.hpi.1.4 \
-        pmd.hpi.3.11 \
-        violations.hpi.0.7.7 \
-        xunit.hpi.1.13
+        pmd.hpi.3.15 \
+        violations.hpi.0.7.9 \
+        xunit.hpi.1.17
 
 WAR_LATEST_URL=http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 # No provided at the moment
