@@ -1,10 +1,10 @@
-WAR_URL=http://mirrors.jenkins-ci.org/war/1.413/jenkins.war
+WAR_URL=http://mirrors.jenkins-ci.org/war/1.414/jenkins.war
 PLUGIN_URL=http://mirrors.jenkins-ci.org/plugins/
 
 PLUGINS=analysis-collector.hpi.1.13 \
         analysis-core.hpi.1.19 \
         checkstyle.hpi.3.15 \
-        clover.hpi.4.0.1 \
+        cloverphp.hpi.0.3 \
         dashboard-view.hpi.2.0.2 \
         dry.hpi.2.15 \
         git.hpi.1.1.9 \
@@ -23,7 +23,7 @@ PLUGIN_LATEST_URL=http://mirrors.jenkins-ci.org/latest/
 PLUGINS_LATEST=analysis-collector.hpi \
                analysis-core.hpi \
                checkstyle.hpi \
-               clover.hpi \
+               cloverphp.hpi \
                dashboard-view.hpi \
                dry.hpi \
                git.hpi \
