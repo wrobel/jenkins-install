@@ -17,7 +17,7 @@ DESC="Jenkins Continuous Integration Server"
 NAME=jenkins
 
 if [ "x$WORKDIR" == "x" ]; then
-  WORKDIR=$HOME/horde-support/ci-jenkins
+  WORKDIR=$HOME/horde-support/ci
 fi
 
 # defaults for jenkins continuous integration server
