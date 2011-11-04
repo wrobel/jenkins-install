@@ -12,6 +12,7 @@ PLUGINS=analysis-collector.hpi.1.18 \
         greenballs.hpi.1.11 \
         htmlpublisher.hpi.0.7 \
         jdepend.hpi.1.2.3 \
+        jswidgets.hpi.1.8 \
         plot.hpi.1.5 \
         pmd.hpi.3.22 \
         violations.hpi.0.7.10 \
@@ -32,6 +33,7 @@ PLUGINS_LATEST=analysis-collector.hpi \
                greenballs.hpi \
                htmlpublisher.hpi \
                jdepend.hpi \
+               jswidgets.hpi \
                plot.hpi \
                pmd.hpi \
                violations.hpi \
