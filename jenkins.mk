@@ -2,21 +2,21 @@ WAR_URL=http://mirrors.jenkins-ci.org/war/1.455/jenkins.war
 PLUGIN_URL=http://mirrors.jenkins-ci.org/plugins/
 
 PLUGINS=analysis-collector.hpi.1.18 \
-        analysis-core.hpi.1.32 \
-        checkstyle.hpi.3.21 \
+        analysis-core.hpi.1.38 \
+        checkstyle.hpi.3.24 \
         cloverphp.hpi.0.3.2 \
-        dashboard-view.hpi.2.1 \
-        dry.hpi.2.21 \
-        fstrigger.hpi.0.15 \
-        git.hpi.1.1.12 \
+        dashboard-view.hpi.2.2 \
+        dry.hpi.2.24 \
+        fstrigger.hpi.0.30 \
+        git.hpi.1.1.16 \
         greenballs.hpi.1.11 \
         htmlpublisher.hpi.0.7 \
         jdepend.hpi.1.2.3 \
         jswidgets.hpi.1.8 \
         plot.hpi.1.5 \
-        pmd.hpi.3.22 \
+        pmd.hpi.3.25 \
         violations.hpi.0.7.10 \
-        xunit.hpi.1.29
+        xunit.hpi.1.40
 
 WAR_LATEST_URL=http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 # No provided at the moment
